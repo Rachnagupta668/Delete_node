@@ -1,0 +1,55 @@
+import java.util.*;
+ class Node{  // we ceeate a class node 
+    int data;  //enter the data
+    Node next = null;  // if node next not present 
+    Node(int data){   //we create node next and int data
+                        //  and in 1 node we int data and another node adrres or that is caller next data
+    this.data = data;          
+    this.next = null;
+}
+}
+class LinkedList{                //here we create a linked list 
+                                 // we consider the 1st node is head so itsa call a node he
+    Node head;
+     void add(int data){               // in linklist we add data
+                                        
+        Node new_node = new Node(data);         //here we intialise  node in linklist
+        if(head == null){                    // if head is equal to null means head is not present
+            head = new_node;                 // we create a head node in lin list and return
+            return;
+        } 
+        Node curr = head;                     //here we considecurr node is head in linklist class
+        while(curr.next != null){               //if another node present so we continue and consider curr node is save address of curr.next
+            curr = curr.next;                  
+        }
+        curr.next = new_node;                  //if not presnt another node then we create new node its name curr .next
+    }
+}
+public class Main{
+    public static void main (String args[]){
+        Scanner sc = new Scanner(System.in);       
+        int n = sc.nextInt();                     //that is the elemnet present in node 
+        LinkedList ll = new LinkedList();             //we create new ll  there is not present delete node 
+        for(int i = 0; i<n; i++){                   // this for loop is use gor enter node elemnt
+            int x = sc.nextInt();               
+            ll.add(x);                          //here we add all  node 
+            
+        }
+        int toRemove = sc.nextInt();     //here we enter index of whose want to delete node             
+        if(toRemove ==0){                //if delete node index is 0 
+            ll.head = ll.head.next;        // then head is consider to next node that is called ll.head.next
+        }
+        else{
+            Node curr = ll.head;            // if index is not 0 then curr node is head
+            for(int i =  1; i<toRemove; i++){         //we start for loop to index 1 till to remove index and till we print  node
+                curr = curr.next;                // and curr is storse curr.next 
+            }
+            curr.next = curr.next.next;     //if remove index find then skip and befor node stor curr.next,next adrsss
+        }
+        Node curr = ll.head;             //curr is head
+        while(curr != null){              // we continue while loop till curr is not null adress store
+            System.out.print(curr.data + " ");     //we print all data
+            curr = curr.next;                       //and conside curr deta is stor next data adrss and continue 
+        }
+}
+}
